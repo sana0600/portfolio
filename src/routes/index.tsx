@@ -15,6 +15,7 @@ import {
   FileText,
   Github,
   GraduationCap,
+  ImageIcon,
   Linkedin,
   Mail,
   MapPin,
@@ -38,17 +39,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import profileAsset from "@/assets/profile.jpg.asset.json";
+import virtualMateScreenshot from "@/assets/virtualmate-screenshot.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Shaik Attar Sana — Backend & GenAI Engineer" },
+      { title: "Shaik Attar Sana - Backend & GenAI Engineer" },
       {
         name: "description",
         content:
           "Portfolio of Shaik Attar Sana, a software engineer building scalable backend systems and AI-powered applications.",
       },
-      { property: "og:title", content: "Shaik Attar Sana — Software Engineer" },
+      { property: "og:title", content: "Shaik Attar Sana - Software Engineer" },
       {
         property: "og:description",
         content: "Backend engineering, cloud systems, and production-ready GenAI applications.",
@@ -90,7 +92,22 @@ const skillGroups = [
   },
 ];
 
-const projects = [
+type Project = {
+  id: string;
+  index: string;
+  category: "AI / ML" | "Backend / Full Stack";
+  title: string;
+  kicker: string;
+  description: string;
+  tags: readonly string[];
+  highlights: readonly string[];
+  accent: string;
+  image?: string;
+  imageAlt?: string;
+  imagePlaceholder?: string;
+};
+
+const projects: readonly Project[] = [
   {
     id: "virtualmate",
     index: "01",
@@ -105,6 +122,8 @@ const projects = [
       "Uses a modular tool architecture designed for extensibility.",
     ],
     accent: "emerald",
+    image: virtualMateScreenshot.url,
+    imageAlt: "VirtualMate task interface showing example document and email tasks",
   },
   {
     id: "caption-generator",
@@ -120,6 +139,7 @@ const projects = [
       "Deployed as an approachable real-time Flask experience.",
     ],
     accent: "cyan",
+    imagePlaceholder: "Screenshot 102",
   },
   {
     id: "jago-grahak",
@@ -150,12 +170,13 @@ const projects = [
       "Stripe integration completes the booking flow end to end.",
     ],
     accent: "amber",
+    imagePlaceholder: "Screenshot 103",
   },
-] as const;
+];
 
 const experiences = [
   {
-    period: "APR 2025 — PRESENT",
+    period: "APR 2025 - PRESENT",
     role: "Systems Engineer",
     company: "Tata Consultancy Services (TCS)",
     details: [
@@ -165,7 +186,7 @@ const experiences = [
     ],
   },
   {
-    period: "AUG 2024 — JAN 2025",
+    period: "AUG 2024 - JAN 2025",
     role: "Associate Software Engineer",
     company: "Accenture",
     details: [
@@ -250,10 +271,10 @@ function Portfolio() {
                 I build <span key={roleIndex} className="role-swap text-accent-foreground">{roles[roleIndex]}</span>
               </div>
               <p className="mt-8 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-                Software Engineer with 2 years of experience engineering dependable backend platforms and practical GenAI products—from REST APIs and cloud workflows to RAG systems and autonomous agents.
+                Software Engineer with 2 years of experience engineering dependable backend platforms and practical GenAI products - from REST APIs and cloud workflows to RAG systems and autonomous agents.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <Button size="lg" onClick={() => setResumeOpen(true)}><FileText /> View résumé</Button>
+                <Button size="lg" onClick={() => setResumeOpen(true)}><FileText /> View Resume</Button>
                 <Button size="lg" variant="outline" asChild><a href="#contact"><Send /> Contact me</a></Button>
               </div>
             </div>
@@ -261,11 +282,11 @@ function Portfolio() {
               <ProfilePhoto />
               <div className="mt-8 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Profile / 2026</div>
               <dl className="mt-6 space-y-6 text-sm">
-                <div><dt className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Role</dt><dd className="font-medium">Backend & GenAI Specialist</dd></div>
+                <div><dt className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Role</dt><dd className="max-w-72 font-medium">Java Backend Developer & Gen AI Enthusiast</dd></div>
                 <div><dt className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Based in</dt><dd className="flex items-center justify-center gap-2 font-medium"><MapPin className="size-4 text-primary" /> Hyderabad, India</dd></div>
               </dl>
               <div className="mt-8 flex gap-2">
-                <SocialLink href="https://github.com/shaikattarsana" label="GitHub"><Github /></SocialLink>
+                <SocialLink href="https://github.com/sana0600" label="GitHub"><Github /></SocialLink>
                 <SocialLink href="https://linkedin.com/in/shaik-attar-sana-96604b215" label="LinkedIn"><Linkedin /></SocialLink>
                 <SocialLink href={`mailto:${EMAIL}`} label="Email"><Mail /></SocialLink>
               </div>
@@ -278,12 +299,11 @@ function Portfolio() {
           <div className="mx-auto grid max-w-7xl gap-12 px-5 py-24 lg:grid-cols-[260px_1fr] lg:px-8">
             <SectionLabel number="01" title="About" />
             <div>
-              <p className="max-w-4xl font-display text-3xl font-medium leading-tight sm:text-5xl">
-                I turn complex requirements into <span className="text-primary">clear systems</span> that perform reliably in the real world.
+              <p className="max-w-4xl font-display text-2xl font-medium leading-tight sm:text-4xl">
+                Software Engineer specializing in Java backend engineering, cloud-native services, and applied Generative AI. I build scalable APIs, intelligent applications, and production-minded systems that turn complex problems into simple, reliable solutions.
               </p>
-              <div className="mt-12 grid gap-8 border-t border-border pt-8 sm:grid-cols-3">
+              <div className="mt-12 grid gap-8 border-t border-border pt-8 sm:grid-cols-2">
                 <Stat value="2+" label="Years engineering" />
-                <Stat value="4" label="Cloud platforms" />
                 <Stat value="Java + AI" label="Core focus" />
               </div>
             </div>
@@ -331,11 +351,11 @@ function Portfolio() {
               ))}
               <li className="relative pl-8 lg:pl-14">
                 <span className="absolute -left-[7px] top-1.5 size-3 rounded-full border-2 border-background bg-accent-foreground ring-4 ring-accent-foreground/10" />
-                <span className="mb-4 block font-mono text-xs font-semibold tracking-[0.12em] text-accent-foreground lg:absolute lg:-left-[250px] lg:top-1 lg:w-[190px]">DEC 2020 — MAY 2024</span>
+                <span className="mb-4 block font-mono text-xs font-semibold tracking-[0.12em] text-accent-foreground lg:absolute lg:-left-[250px] lg:top-1 lg:w-[190px]">DEC 2020 - MAY 2024</span>
                 <GraduationCap className="mb-5 size-6 text-accent-foreground" />
                 <h3 className="font-display text-2xl font-semibold sm:text-3xl">B.Tech, Computer Science & Engineering</h3>
-                <p className="mt-1 text-sm text-muted-foreground">G Pulla Reddy Engineering College · Kurnool</p>
-                <div className="mt-6 flex flex-wrap gap-2"><Badge>Microsoft Azure DP-900</Badge><Badge>EPAM COE — Java</Badge></div>
+                <p className="mt-1 text-sm text-muted-foreground">G Pulla Reddy Engineering College · Kurnool · 87.5%</p>
+                <div className="mt-6 flex flex-wrap gap-2"><Badge>Microsoft Azure DP-900</Badge><Badge>EPAM COE - Java</Badge></div>
               </li>
             </ol>
           </div>
@@ -376,7 +396,7 @@ function Portfolio() {
           <div className="mx-auto grid max-w-7xl gap-16 px-5 py-24 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
             <div>
               <div className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary"><Sparkles className="size-4" /> Start a conversation</div>
-              <h2 className="font-display text-4xl font-semibold leading-tight sm:text-6xl">Have a complex problem worth solving?</h2>
+              <h2 className="font-display text-4xl font-semibold leading-tight sm:text-6xl">Want to connect?</h2>
               <p className="mt-6 max-w-lg leading-7 text-muted-foreground">I’m open to software engineering opportunities and thoughtful collaborations in backend, cloud, and applied AI.</p>
               <div className="mt-10 space-y-3">
                 <ContactRow icon={Mail} label="Email" value={EMAIL} href={`mailto:${EMAIL}`} copied={copied === "email"} onCopy={() => copyValue("email", EMAIL)} />
@@ -400,7 +420,7 @@ function Portfolio() {
       </footer>
 
       <Dialog open={Boolean(selectedProject)} onOpenChange={(open) => !open && setProjectId(null)}>
-        <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto p-0">
+        <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto p-0">
           {selectedProject && (
             <>
               <div className={`project-${selectedProject.accent} border-b border-border p-7 sm:p-10`}>
@@ -408,6 +428,18 @@ function Portfolio() {
                 <DialogHeader className="mt-8"><DialogTitle className="font-display text-3xl sm:text-4xl">{selectedProject.title}</DialogTitle><DialogDescription className="text-base">{selectedProject.kicker}</DialogDescription></DialogHeader>
               </div>
               <div className="p-7 sm:p-10">
+                {(selectedProject.image || selectedProject.imagePlaceholder) && (
+                  <div className="mb-8 overflow-hidden rounded-md border border-border bg-secondary/30">
+                    {selectedProject.image ? (
+                      <img src={selectedProject.image} alt={selectedProject.imageAlt ?? `${selectedProject.title} screenshot`} className="aspect-video w-full object-cover object-top" loading="lazy" />
+                    ) : (
+                      <div className="flex aspect-video w-full flex-col items-center justify-center gap-3 text-muted-foreground" aria-label={`${selectedProject.title} image placeholder`}>
+                        <ImageIcon className="size-8 text-primary" />
+                        <span className="font-mono text-xs uppercase tracking-[0.14em]">{selectedProject.imagePlaceholder} coming soon</span>
+                      </div>
+                    )}
+                  </div>
+                )}
                 <p className="leading-7 text-muted-foreground">{selectedProject.description}</p>
                 <h4 className="mt-8 text-xs font-semibold uppercase tracking-[0.15em] text-primary">Key highlights</h4>
                 <ul className="mt-4 space-y-3">{selectedProject.highlights.map((item) => <li key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground"><Check className="mt-1 size-4 shrink-0 text-primary" />{item}</li>)}</ul>
@@ -430,7 +462,7 @@ function Portfolio() {
             <ResumeSection title="Profile"><p>Software Engineer with 2 years of experience in backend development and AI-powered application development. Experienced in Java, Spring Boot, Python, REST APIs, cloud platforms, and GenAI technologies including RAG and AI agents.</p></ResumeSection>
             <ResumeSection title="Experience">{experiences.map((item) => <div key={item.company} className="mb-6 last:mb-0"><div className="flex flex-wrap justify-between gap-2"><strong>{item.role} · {item.company}</strong><span className="font-mono text-xs text-muted-foreground">{item.period}</span></div><ul className="mt-2 list-disc space-y-1 pl-5">{item.details.map((detail) => <li key={detail}>{detail}</li>)}</ul></div>)}</ResumeSection>
             <ResumeSection title="Selected Projects">{projects.map((project) => <p key={project.id} className="mb-3 last:mb-0"><strong>{project.title}:</strong> {project.description} <span className="text-muted-foreground">({project.tags.join(", ")})</span></p>)}</ResumeSection>
-            <div className="grid gap-8 sm:grid-cols-2"><ResumeSection title="Education"><p><strong>B.Tech in Computer Science & Engineering</strong><br />G Pulla Reddy Engineering College<br /><span className="text-muted-foreground">Dec 2020 — May 2024</span></p></ResumeSection><ResumeSection title="Certifications"><p>Microsoft Azure Data Fundamentals (DP-900)</p><p>EPAM Center of Excellence — Java</p></ResumeSection></div>
+            <div className="grid gap-8 sm:grid-cols-2"><ResumeSection title="Education"><p><strong>B.Tech in Computer Science & Engineering</strong><br />G Pulla Reddy Engineering College<br /><span className="text-muted-foreground">87.5% · Dec 2020 - May 2024</span></p></ResumeSection><ResumeSection title="Certifications"><p>Microsoft Azure Data Fundamentals (DP-900)</p><p>EPAM Center of Excellence - Java</p></ResumeSection></div>
           </div>
         </DialogContent>
       </Dialog>
