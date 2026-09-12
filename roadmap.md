@@ -5,4 +5,4 @@
 - [x] Add project filters and accessible project detail dialogs
 - [x] Add contact actions, email form, and copy feedback
 - [x] Add printable résumé dialog
-- [ ] Validate desktop and mobile previews
+- [x] Validate desktop and mobile previews
