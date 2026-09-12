@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import profileAsset from "@/assets/profile.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -256,11 +257,12 @@ function Portfolio() {
                 <Button size="lg" variant="outline" asChild><a href="#contact"><Send /> Contact me</a></Button>
               </div>
             </div>
-            <aside className="self-end border-l border-border pl-6 lg:pl-8" aria-label="Profile details">
-              <div className="mb-8 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Profile / 2026</div>
-              <dl className="space-y-6 text-sm">
+            <aside className="flex flex-col items-center text-center" aria-label="Profile details">
+              <ProfilePhoto />
+              <div className="mt-8 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Profile / 2026</div>
+              <dl className="mt-6 space-y-6 text-sm">
                 <div><dt className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Role</dt><dd className="font-medium">Backend & GenAI Specialist</dd></div>
-                <div><dt className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Based in</dt><dd className="flex items-center gap-2 font-medium"><MapPin className="size-4 text-primary" /> Hyderabad, India</dd></div>
+                <div><dt className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Based in</dt><dd className="flex items-center justify-center gap-2 font-medium"><MapPin className="size-4 text-primary" /> Hyderabad, India</dd></div>
               </dl>
               <div className="mt-8 flex gap-2">
                 <SocialLink href="https://github.com/shaikattarsana" label="GitHub"><Github /></SocialLink>
@@ -454,6 +456,21 @@ function Stat({ value, label }: { value: string; label: string }) {
 
 function Badge({ children }: { children: React.ReactNode }) {
   return <span className="rounded border border-border bg-secondary px-2.5 py-1.5 font-mono text-xs text-muted-foreground">{children}</span>;
+}
+
+function ProfilePhoto() {
+  return (
+    <div className="relative size-44 sm:size-52 lg:size-56">
+      <div className="absolute -inset-5 rounded-full bg-primary/25 blur-3xl" aria-hidden />
+      <div className="absolute inset-0 rounded-full p-[3px] [background:conic-gradient(from_180deg,var(--primary),oklch(0.68_0.16_285),var(--accent-foreground),var(--primary))]" aria-hidden>
+        <div className="size-full rounded-full bg-card" />
+      </div>
+      <div className="absolute inset-[3px] overflow-hidden rounded-full border border-border/50">
+        <img src={profileAsset.url} alt="Portrait of Shaik Attar Sana" className="size-full object-cover object-top" loading="eager" />
+      </div>
+      <span className="absolute bottom-1 right-1 size-5 rounded-full border-[3px] border-background bg-primary" aria-hidden />
+    </div>
+  );
 }
 
 function ContactRow({ icon: Icon, label, value, href, copied, onCopy }: { icon: typeof Mail; label: string; value: string; href: string; copied: boolean; onCopy: () => void }) {
