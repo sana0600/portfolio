@@ -40,6 +40,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import profileAsset from "@/assets/profile.jpg.asset.json";
 import virtualMateScreenshot from "@/assets/virtualmate-screenshot.png.asset.json";
+import captionScreenshot from "@/assets/caption-screenshot.png.asset.json";
+import homelyHubScreenshot from "@/assets/homelyhub-screenshot.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -139,7 +141,8 @@ const projects: readonly Project[] = [
       "Deployed as an approachable real-time Flask experience.",
     ],
     accent: "cyan",
-    imagePlaceholder: "Screenshot 102",
+    image: captionScreenshot.url,
+    imageAlt: "Image Caption Generator web app showing an uploaded image and its generated caption",
   },
   {
     id: "jago-grahak",
@@ -170,7 +173,8 @@ const projects: readonly Project[] = [
       "Stripe integration completes the booking flow end to end.",
     ],
     accent: "amber",
-    imagePlaceholder: "Screenshot 103",
+    image: homelyHubScreenshot.url,
+    imageAlt: "Homely Hub rental booking platform listings page",
   },
 ];
 
