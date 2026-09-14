@@ -1,24 +1,21 @@
-# Sana's Tech Showcase
+# Hey, I'm Sana 👋
 
-A personal portfolio website for Shaik Attar Sana, a Software Engineer specializing in backend systems and AI-powered application development.
+Welcome to my little corner of GitHub.
 
-## Development
+I'm a software developer who enjoys building things with **Java, Spring Boot, Python and Generative AI**. I like turning ideas into practical applications and experimenting with new technologies along the way.
 
-Install dependencies and start the development server:
+This repository is home to my portfolio, projects, experiments, and things I'm currently learning.
 
-```bash
-bun install
-bun run dev
-```
+### 🚀 What I Build
 
-Build for production:
+Backend applications, AI-powered tools, APIs, and other projects that solve real problems.
 
-```bash
-bun run build
-```
+### 🛠️ Tech I Enjoy
 
-Preview the production build:
+Java • Spring Boot • Python • React • GenAI • RAG • AI Agents • Cloud
 
-```bash
-bun run preview
-```
+### 🌐 Portfolio
+
+[Visit my portfolio](https://sana0600.github.io/portfolio/)
+
+Thanks for stopping by! ✨
