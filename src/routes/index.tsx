@@ -386,7 +386,21 @@ function Portfolio() {
                   </div>
                   <div className="my-10 flex size-14 items-center justify-center rounded-md border border-border bg-secondary/60 text-primary"><Terminal className="size-6" /></div>
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{project.kicker}</p>
-                  <h3 className="mt-2 font-display text-2xl font-semibold">{project.title}</h3>
+                  <h3 className="mt-2 flex items-center gap-2.5 font-display text-2xl font-semibold">
+                    {project.title}
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Live demo"
+                        aria-label={`Open ${project.title} live demo`}
+                        className="inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary transition-colors hover:bg-primary/25"
+                      >
+                        <ExternalLink className="size-3" />
+                      </a>
+                    )}
+                  </h3>
                   <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
                   <div className="mt-6 flex items-center justify-between gap-4 border-t border-border pt-5">
                     <div className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[10px] text-muted-foreground">{project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
