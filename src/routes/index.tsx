@@ -107,6 +107,7 @@ type Project = {
   image?: string;
   imageAlt?: string;
   imagePlaceholder?: string;
+  demoUrl?: string;
 };
 
 const projects: readonly Project[] = [
@@ -117,7 +118,7 @@ const projects: readonly Project[] = [
     title: "VirtualMate",
     kicker: "Autonomous GenAI Agent",
     description: "A tool-using AI agent that turns natural-language requests into documents, research, emails, and structured output.",
-    tags: ["Python", "Groq LLM", "DuckDuckGo", "ReportLab"],
+    tags: ["Python", "FastAPI", "Groq LLM", "DuckDuckGo", "ReportLab"],
     highlights: [
       "Generates PDF, Word, Excel, and email content from conversational prompts.",
       "Combines Groq-powered reasoning with live DuckDuckGo search.",
@@ -126,6 +127,7 @@ const projects: readonly Project[] = [
     accent: "emerald",
     image: virtualMateScreenshot.url,
     imageAlt: "VirtualMate task interface showing example document and email tasks",
+    demoUrl: "https://virtual-mate-66cf.onrender.com/",
   },
   {
     id: "caption-generator",
@@ -448,6 +450,11 @@ function Portfolio() {
                 <h4 className="mt-8 text-xs font-semibold uppercase tracking-[0.15em] text-primary">Key highlights</h4>
                 <ul className="mt-4 space-y-3">{selectedProject.highlights.map((item) => <li key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground"><Check className="mt-1 size-4 shrink-0 text-primary" />{item}</li>)}</ul>
                 <div className="mt-8 flex flex-wrap gap-2">{selectedProject.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div>
+                {selectedProject.demoUrl && (
+                  <Button asChild className="mt-8 w-full sm:w-auto" size="lg">
+                    <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer">Live Demo <ExternalLink className="size-4" /></a>
+                  </Button>
+                )}
               </div>
             </>
           )}
